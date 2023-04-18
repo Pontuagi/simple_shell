@@ -36,15 +36,15 @@ int main(int argc, char **argv)
 		argc++;
 		argv = malloc(sizeof(char *) * argc);
 		token = strtok(buffer_copy, delim);
-		while (token != NULL)
+		for (i = 0; token != NULL; i++)
 		{
 			argv[i] = malloc(sizeof(char) * strlen(token));
-			argv[i] = token;
+			strcpy(argv[i], token);
 			token = strtok(NULL, delim);
-			i++;
 		}
 		argv[i] = NULL;
+		execute_cmd(argv);
 	}
-	free(buffer), free(buffer_copy), free(argv);
+	free(buffer), free(buffer_copy);
 	return (0);
 }
