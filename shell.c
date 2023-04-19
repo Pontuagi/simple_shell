@@ -11,7 +11,6 @@ int main(int argc, char **argv)
 {
 	size_t n = 0;
 	ssize_t bytes_read;
-	int status, i = 0;
 	char *token, *buffer, *buffer_copy, *delim = " \n";
 
 	argc = 0;
