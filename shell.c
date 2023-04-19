@@ -35,7 +35,8 @@ int main(int argc, char **argv)
 		}
 		argc++;
 		argv = tokenize(buffer_copy, argc);
-		execute_cmd(argv);
+		fork_exec(argv);
+	/*	execute_cmd(argv); */
 	}
 	free(buffer), free(buffer_copy);
 	return (0);

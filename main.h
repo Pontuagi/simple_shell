@@ -13,5 +13,6 @@
 void execute_cmd(char **argv);
 char *get_path(char *command);
 char **tokenize(char *buffer, int argc);
+void fork_exec(char **argv);
 
 #endif
