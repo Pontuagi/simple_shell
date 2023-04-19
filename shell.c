@@ -34,15 +34,7 @@ int main(int argc, char **argv)
 			token = strtok(NULL, " ");
 		}
 		argc++;
-		argv = malloc(sizeof(char *) * argc);
-		token = strtok(buffer_copy, delim);
-		for (i = 0; token != NULL; i++)
-		{
-			argv[i] = malloc(sizeof(char) * strlen(token));
-			strcpy(argv[i], token);
-			token = strtok(NULL, delim);
-		}
-		argv[i] = NULL;
+		argv = tokenize(buffer_copy, argc);
 		execute_cmd(argv);
 	}
 	free(buffer), free(buffer_copy);

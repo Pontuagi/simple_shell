@@ -9,15 +9,24 @@
 
 void execute_cmd(char **argv)
 {
-	char *command = NULL;
+	char *command = NULL, *path = NULL;
 
 	if (argv)
 	{
 		command = argv[0];
-		if (execve(command, argv, NULL) == -1)
+		path = get_path(command);
+		if (path == NULL)
 		{
-			perror("Error executing");
+			perror("command not found here");
 		}
+		else
+		{
+			if (execve(path, argv, NULL) == -1)
+			{
+				perror("Error executing");
+			}
+		}
+
 
 	}
 
