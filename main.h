@@ -10,9 +10,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-void execute_cmd(char **argv);
+void exit_func(char **argv);
+void execute_cmd(char **argv, char *buff, char **env);
 char *get_path(char *command);
 char **tokenize(char *buffer, int argc);
-void fork_exec(char **argv);
+void fork_exec(char **argv, char *path);
+void print_env(char **env);
 
 #endif
