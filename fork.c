@@ -3,9 +3,10 @@
 /**
   * fork_exec - create a child procees to execute our command
   * @argv: the command to execute
+  * @path: the path of the command
   */
 
-void fork_exec(char **argv)
+void fork_exec(char **argv, char *path)
 {
 	pid_t child;
 	int status;
@@ -14,7 +15,11 @@ void fork_exec(char **argv)
 	{
 	child = fork();
 	if (child == 0)
-		execute_cmd(argv);
+	{
+		if (execve(path, argv, NULL) == -1)
+			perror("error executing comand");
+		exit(0);
+	}
 	else
 		wait(&status);
 	}
