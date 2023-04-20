@@ -6,7 +6,7 @@
   * Return: 0 on success and -1 on failure
   */
 
-int main(void)
+int get_pid(void)
 {
 	pid_t n = getpid();
 

@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
-  * main - print ppid of a program.
+  * get_ppid - print ppid of a program.
   *
   * Return: 0 on success and -1 on fail
   */
 
-int main(void)
+int get_ppid(void)
 {
 	pid_t bn = getppid();
 

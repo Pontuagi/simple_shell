@@ -4,12 +4,11 @@
  * execute_cmd - execute the argv[0] as a command
  * @argv: argument vector containing commands and flags
  * @env: pointer to enviroment variables
- * @buff: pointer to our entered string.
  *
  * Return: void.
  */
 
-void execute_cmd(char **argv, char *buff, char **env)
+void execute_cmd(char **argv, char **env)
 {
 	char *command = NULL, *path = NULL;
 
@@ -18,7 +17,7 @@ void execute_cmd(char **argv, char *buff, char **env)
 		command = argv[0];
 		if (strcmp(command, "exit") == 0)
 		{
-			exit_func(argv);
+			exit_func();
 		}
 		else if (strcmp(command, "env") == 0)
 		{

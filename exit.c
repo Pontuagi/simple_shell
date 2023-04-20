@@ -5,7 +5,7 @@
  * @argv: the agruments 
  */
 
-void exit_func(char **argv)
+void exit_func(void)
 {
 	exit(0);
 }
