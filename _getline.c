@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+  * _read_line - get input from standard input and save to buffer
+  *
+  * Return: return pointer to buffer.
+  */
 #define _BUFSIZE 1024
 char *_read_line(void)
 {

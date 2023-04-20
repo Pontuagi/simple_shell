@@ -4,6 +4,8 @@
   * main - create a simple shell
   * @argc: argument count
   * @argv: argument vector to store the arguments
+  * @env: parameter to store our local enviromental variables
+  *
   * Return: 0 or -1
   */
 
