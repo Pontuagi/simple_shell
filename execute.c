@@ -10,14 +10,18 @@
 
 void execute_cmd(char **argv, char **env)
 {
-	char *command = NULL, *path = NULL;
+	char *command = NULL, *path = NULL, *flag_1 = NULL;
 
 	if (argv)
 	{
 		command = argv[0];
+		flag_1 = argv[1];
 		if (strcmp(command, "exit") == 0)
 		{
-			exit_func();
+			if (flag_1)
+				exit_func(argv[1]);
+			else
+				exit_func(0);
 		}
 		else if (strcmp(command, "env") == 0)
 		{

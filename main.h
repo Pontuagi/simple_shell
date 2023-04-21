@@ -12,7 +12,7 @@
 
 int get_ppid(void);
 int get_pid(void);
-void exit_func(void);
+void exit_func(char *num);
 void execute_cmd(char **argv, char **env);
 char *get_path(char *command);
 char **tokenize(char *buffer, int argc);
