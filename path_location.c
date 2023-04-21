@@ -12,13 +12,14 @@ char *get_path(char *command)
 	char *path, *path_copy, *file_path, *token;
 	int command_len, path_len;
 	struct stat buffer;
+	const char *delim = ":";
 
 	path = getenv("PATH");
 	if (path)
 	{
 		path_copy = strdup(path);
 		command_len = strlen(command);
-		token = strtok(path_copy, ":");
+		token = strtok(path_copy, delim);
 		while (token != NULL)
 		{
 			path_len = strlen(token);
@@ -36,7 +37,7 @@ char *get_path(char *command)
 			else
 			{
 				free(file_path);
-				token = strtok(NULL, ":");
+				token = strtok(NULL, delim);
 			}
 		}
 		free(path_copy);

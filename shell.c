@@ -27,11 +27,11 @@ int main(int argc, char **argv, char **env)
 			perror("error duplicating string");
 			return (-1);
 		}
-		token = strtok(buffer, delim);
+		token = str_tok(buffer, delim);
 		while (token != NULL)
 		{
 			argc++;
-			token = strtok(NULL, " ");
+			token = str_tok(NULL, " ");
 		}
 		argc++;
 		argv = tokenize(buffer_copy, argc);

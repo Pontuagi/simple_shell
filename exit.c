@@ -1,8 +1,7 @@
 #include "main.h"
 
 /**
- * exit - to exit the shell
- * @argv: the agruments 
+ * exit_func - to exit the shell
  */
 
 void exit_func(void)

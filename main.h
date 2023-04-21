@@ -20,5 +20,6 @@ void fork_exec(char **argv, char *path);
 void print_env(char **env);
 ssize_t get_line(char **buffer,  FILE *stream);
 char *_read_line(void);
+char *str_tok(char *str, const char *delim);
 
 #endif
