@@ -5,8 +5,9 @@
  * @num: exit argument.
  */
 
-void exit_func(char *num)
+void exit_func(char **argv)
 {
+	char *num = argv[1];
 	int no;
 
 	if (num == NULL)
