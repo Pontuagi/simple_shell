@@ -2,6 +2,7 @@
 
 /**
  * exit_func - to exit the shell
+ * @argc: argument count
  * @argv: argument vector containing flags and arguments
  */
 
