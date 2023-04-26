@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv, char **env)
 {
-	char *token, *buffer, *buffer_copy, *delim = " ";
+	char *token, *buffer = NULL, *buffer_copy = NULL, *delim = " \n";
 	size_t n = 0;
 	ssize_t bytes;
 
@@ -25,6 +25,8 @@ int main(int argc, char **argv, char **env)
 			perror("error reading from stdin");
 			return (-1);
 		}
+		if (buffer[0] == '\n')
+			continue;
 		if (buffer == NULL)
 			return (-1);
 		buffer_copy = _strdup(buffer);
@@ -41,9 +43,7 @@ int main(int argc, char **argv, char **env)
 			argc++;
 			token = strtok(NULL, delim);
 		}
-		/* tokenize to assign each token to an argv[] */
 		argv = tokenize(buffer_copy, bytes);
-		/* check for built-in commands and execute */
 		keyword(argc, argv, env);
 	}
 	free(buffer), free(buffer_copy);

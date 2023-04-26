@@ -31,5 +31,6 @@ char *_strcat(char *s1, char *s2);
 char *_strcpy(char *dest, char *src);
 int _atoi(char *s);
 char *_strchr(const char *s, char c);
+int _putchar(char c);
 
 #endif

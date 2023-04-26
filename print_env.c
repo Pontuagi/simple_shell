@@ -8,7 +8,7 @@
  */
 void print_env(char **env)
 {
-	unsigned int i = 0;
+	unsigned int i = 0, j;
 	int status;
 	pid_t child;
 
@@ -17,7 +17,9 @@ void print_env(char **env)
 	{
 		while (env[i] != NULL)
 		{
-			printf("%s\n", env[i]);
+			for (j = 0; env[i][j] != '\0'; j++)
+				_putchar(env[i][j]);
+			_putchar('\n');
 			i++;
 		}
 		exit(0);
