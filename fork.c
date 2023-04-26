@@ -13,14 +13,18 @@ void fork_exec(char **argv, char *path)
 
 	if (argv != NULL)
 	{
-	child = fork();
-	if (child == 0)
-	{
-		if (execve(path, argv, NULL) == -1)
-			perror("error executing comand");
-		exit(0);
-	}
-	else
-		wait(&status);
+		child = fork();
+		if (child == 0)
+		{
+		/* the child process executes the path and returns to parent */
+			if (execve(path, argv, NULL) == -1)
+				perror("error executing comand");
+			exit(0);
+		}
+		else
+		{
+		/* the parent waits for the child to finish executing */
+			wait(&status);
+		}
 	}
 }

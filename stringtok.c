@@ -15,7 +15,7 @@ char *str_tok(char *str, const char *delim)
 
 	if (str == NULL)
 		return (NULL);
-	n = strlen(str);
+	n = _strlen(str);
 	token = malloc(sizeof(char *) * n);
 	if (token == NULL)
 		return (NULL);
@@ -24,7 +24,7 @@ char *str_tok(char *str, const char *delim)
 		return (NULL);
 	for (i = 0; str[i] != '\0'; i++)
 	{
-		if (strchr(delim, str[i]))
+		if (_strchr(delim, str[i]))
 		{
 			word[word_indx++] = '\0';
 			token[j++] = *word;

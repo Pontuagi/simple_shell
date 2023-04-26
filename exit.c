@@ -2,24 +2,31 @@
 
 /**
  * exit_func - to exit the shell
- * @num: exit argument.
+ * @argv: argument vector containing flags and arguments
  */
 
-void exit_func(char **argv)
+void exit_func(int argc, char **argv)
 {
 	char *num = argv[1];
 	int no;
 
-	if (num == NULL)
+	/* if there is only one argument to exit */
+	if (argc == 1)
 	{
 		exit(0);
 	}
-	else
+	/* check if there is ony 2 arguments in exit call */
+	else if (argc == 2)
 	{
-		no = atoi(num);
+		/* convert num to interger using atoi function */
+		no = _atoi(num);
 		if (no > 255)
 			exit(0);
 		else
 			exit(no);
+	}
+	else
+	{
+		perror("Too many arguments to exit");
 	}
 }

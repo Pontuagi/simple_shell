@@ -15,8 +15,9 @@ char *_read_line(void)
 
 	if (!buffer)
 	{
-		fprintf(stderr, "error allocating memory\n");
-		exit(EXIT_FAILURE);
+		perror("error allocating memory\n");
+		free(buffer);
+		return (NULL);
 	}
 
 	while (1)

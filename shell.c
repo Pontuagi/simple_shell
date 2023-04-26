@@ -11,31 +11,40 @@
 
 int main(int argc, char **argv, char **env)
 {
-	/* char *bytes_read;*/
-	char *token, *buffer, *buffer_copy, *delim = " \n";
+	char *token, *buffer, *buffer_copy, *delim = " ";
+	size_t n = 0;
+	ssize_t bytes;
 
-	argc = 0;
 	while (1)
 	{
 		printf("($) ");
-		buffer = _read_line();
+		/* read input from stdin */
+		bytes = getline(&buffer, &n, stdin);
+		if (bytes == -1)
+		{
+			perror("error reading from stdin");
+			return (-1);
+		}
 		if (buffer == NULL)
 			return (-1);
-		buffer_copy = strdup(buffer);
+		buffer_copy = _strdup(buffer);
 		if (buffer_copy == NULL)
 		{
 			perror("error duplicating string");
 			return (-1);
 		}
-		token = str_tok(buffer, delim);
+		/* tokenize to find the number of arguments */
+		argc = 0;
+		token = strtok(buffer, delim);
 		while (token != NULL)
 		{
 			argc++;
-			token = str_tok(NULL, " ");
+			token = strtok(NULL, delim);
 		}
-		argc++;
-		argv = tokenize(buffer_copy, argc);
-		keyword(argv, env);
+		/* tokenize to assign each token to an argv[] */
+		argv = tokenize(buffer_copy, bytes);
+		/* check for built-in commands and execute */
+		keyword(argc, argv, env);
 	}
 	free(buffer), free(buffer_copy);
 	return (0);
