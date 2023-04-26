@@ -9,6 +9,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 
 int get_ppid(void);
 int get_pid(void);

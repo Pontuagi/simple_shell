@@ -28,6 +28,7 @@ void exit_func(int argc, char **argv)
 	}
 	else
 	{
+		errno = EINVAL;
 		perror("Too many arguments to exit");
 	}
 }
