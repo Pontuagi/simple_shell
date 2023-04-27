@@ -14,15 +14,24 @@ int main(int ac, char **av, char **env)
 	char *buffer = NULL;
 	size_t n;
 	ssize_t read;
+	int interactive = isatty(STDIN_FILENO);
 
 	signal(SIGINT, sigint_handler);
 	while (1)
 	{
+		if (interactive)
+		{
 		_puts("($) ");
+		}
 		read = getline(&buffer, &n, stdin);
 		if (read == -1)
+		{
+			if (interactive)
+			{
+				_puts("\n");
+			}
 			break;
-
+		}
 		if (buffer[0] == '\n')
 			continue;
 		if (buffer == NULL)
@@ -30,6 +39,8 @@ int main(int ac, char **av, char **env)
 		ac = _argc(buffer);
 		av = tokenize(buffer, ac);
 		keyword(ac, av, env);
+		if (!interactive)
+			break;
 	}
 	free(buffer);
 	return (0);
