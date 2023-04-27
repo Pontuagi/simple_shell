@@ -15,10 +15,6 @@ void keyword(int argc, char **argv, char **env)
 	{
 		exit_func(argc, argv);
 	}
-	else if (_strcmp(command, "setenv") == 0)
-	{
-		_setenv(argv, env);
-	}
 	else if (_strcmp(command, "env") == 0)
 	{
 		print_env(env);
@@ -29,7 +25,6 @@ void keyword(int argc, char **argv, char **env)
 	}
 	else
 	{
-		execute_cmd(argv);
+		execute_cmd(argv, env);
 	}
-
 }

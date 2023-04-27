@@ -5,14 +5,13 @@
 * @s1: first string
 * @s2: secod string
 *
-*Return:NULL in case of failure but pointer to new string in
-*case of success
+*Return:NULL in case of failure but pointer to new string incase of success
 */
 
 char *_strcat(char *s1, char *s2)
 {
 	char *concat_str;
-	int index, concat_index = 0, len = 0;
+	int index, concat_index = 0, len1 = 0, len2 = 0;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -21,19 +20,22 @@ char *_strcat(char *s1, char *s2)
 		s2 = "";
 
 	/*finding length*/
-	for (index = 0; s1[index] || s2[index]; index++)
-		len++;
+	for (index = 0; s1[index]; index++)
+		len1++;
+	for (index = 0; s2[index]; index++)
+		len2++;
 
-	concat_str = malloc(sizeof(char) * len);
-
+	concat_str = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (concat_str == NULL)
 		return (NULL);
+
 	/*concatinating*/
 	for (index = 0; s1[index]; index++)
 		concat_str[concat_index++] = s1[index];
 
 	for (index = 0; s2[index]; index++)
 		concat_str[concat_index++] = s2[index];
+	concat_str[concat_index] = '\0';
 
 	return (concat_str);
 }

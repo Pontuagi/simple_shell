@@ -3,11 +3,12 @@
 /**
  * execute_cmd - execute the argv[0] as a command
  * @argv: argument vector containing commands and flags
+ * @env: the enviroment variables
  *
  * Return: void.
  */
 
-void execute_cmd(char **argv)
+void execute_cmd(char **argv, char **env)
 {
 	char *command = NULL, *path = NULL;
 
@@ -18,13 +19,14 @@ void execute_cmd(char **argv)
 		path = get_path(command);
 		if (path == NULL)
 		{
-			perror(command);
+			/* errno is set to ENOENT(no such file or directory) */
+			errno = ENOENT;
+			perror("./hsh");
 		}
 		else
 		{
 			/* execute the path returned */
-			fork_exec(argv, path);
+			fork_exec(argv, path, env);
 		}
 	}
-
 }

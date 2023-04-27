@@ -4,9 +4,10 @@
   * fork_exec - create a child procees to execute our command
   * @argv: the command to execute
   * @path: the path of the command
+  * @env: the enviroment variables
   */
 
-void fork_exec(char **argv, char *path)
+void fork_exec(char **argv, char *path, char **env)
 {
 	pid_t child;
 	int status;
@@ -17,7 +18,7 @@ void fork_exec(char **argv, char *path)
 		if (child == 0)
 		{
 		/* the child process executes the path and returns to parent */
-			if (execve(path, argv, NULL) == -1)
+			if (execve(path, argv, env) == -1)
 				perror("error executing comand");
 			exit(0);
 		}
