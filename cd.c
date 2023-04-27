@@ -8,23 +8,18 @@
 
 void _cd(int argc, char **argv)
 {
-	char *home = getenv("HOME");
-	char *directory = argv[1];
 	char buffer[1024];
-	char *previous;
-	static char *last = NULL;
+	static char *last;
 	size_t size = sizeof(buffer);
 
-	getcwd(buffer, size);
-	previous = _strdup(buffer);
 	if (argc == 1)
 	{
-		chdir(home);
-		setenv("PWD", home, 1);
+		chdir(getenv("HOME"));
+		setenv("PWD", getenv("HOME"), 1);
 	}
 	else if (argc == 2)
 	{
-		if (_strcmp(directory, "-") == 0)
+		if (_strcmp(argv[1], "-") == 0)
 		{
 			if (last != NULL)
 			{
@@ -35,7 +30,7 @@ void _cd(int argc, char **argv)
 		}
 		else
 		{
-			if (chdir(directory) == -1)
+			if (chdir(argv[1]) == -1)
 			{
 				perror("invalid directory");
 			}
@@ -50,5 +45,5 @@ void _cd(int argc, char **argv)
 	{
 		printf("Too many arguments\n");
 	}
-	last = previous;
+	last = _strdup(getcwd(buffer, size));
 }

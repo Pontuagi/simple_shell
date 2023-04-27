@@ -27,7 +27,6 @@ char *get_path(char *command)
 			_strcpy(file_path, token);
 			file_path = _strcat(file_path, "/");
 			file_path = _strcat(file_path, command);
-			file_path = _strcat(file_path, "\0");
 
 			if (stat(file_path, &buffer) == 0)
 			{
