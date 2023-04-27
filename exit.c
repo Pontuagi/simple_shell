@@ -21,8 +21,13 @@ void exit_func(int argc, char **argv)
 	{
 		/* convert num to interger using atoi function */
 		no = _atoi(num);
+		if (no == 0 && strcmp(num, "0") != 0)
+		{
+			perror("Invalid exit status");
+			exit(1);
+		}
 		if (no > 255)
-			exit(0);
+			exit(1);
 		else
 			exit(no);
 	}
@@ -30,5 +35,6 @@ void exit_func(int argc, char **argv)
 	{
 		errno = EINVAL;
 		perror("Too many arguments to exit");
+		exit(1);
 	}
 }

@@ -21,7 +21,8 @@ void execute_cmd(char **argv, char **env)
 		{
 			/* errno is set to ENOENT(no such file or directory) */
 			errno = ENOENT;
-			perror("./hsh");
+			_puts("./hsh: ");
+			perror(command);
 		}
 		else
 		{

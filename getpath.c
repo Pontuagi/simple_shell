@@ -9,7 +9,7 @@
 
 char *get_path(char *command)
 {
-	char *path, *path_copy, *file_path, *token;
+	char *path, *path_copy, *file_path, *token, *command_path;
 	int command_len, path_len;
 	struct stat buffer;
 	const char *delim = ":";
@@ -27,11 +27,12 @@ char *get_path(char *command)
 			_strcpy(file_path, token);
 			file_path = _strcat(file_path, "/");
 			file_path = _strcat(file_path, command);
-
 			if (stat(file_path, &buffer) == 0)
 			{
 				free(path_copy);
-				return (file_path);
+				command_path = _strdup(file_path);
+				free(file_path);
+				return (command_path);
 			}
 			else
 			{
@@ -40,10 +41,11 @@ char *get_path(char *command)
 			}
 		}
 		free(path_copy);
-		if (stat(command, &buffer) == 0)
-			return (command);
-
-		return (NULL);
+	}
+	if (stat(command, &buffer) == 0)
+	{
+		command_path = _strdup(command);
+		return (command);
 	}
 	return (NULL);
 }

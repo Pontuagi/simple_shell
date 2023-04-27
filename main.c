@@ -15,12 +15,10 @@ int main(int ac, char **av, char **env)
 	size_t n;
 	ssize_t read;
 
+	signal(SIGINT, sigint_handler);
 	while (1)
 	{
-		_putchar('(');
-		_putchar('$');
-		_putchar(')');
-		_putchar(' ');
+		_puts("($) ");
 		read = getline(&buffer, &n, stdin);
 		if (read == -1)
 			break;

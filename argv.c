@@ -13,8 +13,11 @@ char **tokenize(char *buffer, int argc)
 	char **argv, *token;
 	int i, j;
 	const char *delim = " \n";
-	char *buf_cpy = _strdup(buffer);
+	char *buf_cpy;
 
+	if (buffer == NULL)
+		return (NULL);
+	buf_cpy = _strdup(buffer);
 	if (buf_cpy == NULL)
 		return (NULL);
 
@@ -25,9 +28,9 @@ char **tokenize(char *buffer, int argc)
 		return (NULL);
 	}
 	token = strtok(buf_cpy, delim);
-	for (i = 0; token != NULL; i++)
+	for (i = 0; token != NULL && i < argc; i++)
 	{
-		argv[i] = malloc(sizeof(char) * (_strlen(token) + 1));
+		argv[i] = _strdup(token);
 		if (argv[i] == NULL)
 		{
 			for (j = 0; j < i; j++)
@@ -36,7 +39,6 @@ char **tokenize(char *buffer, int argc)
 			free(buf_cpy);
 			return (NULL);
 		}
-		_strcpy(argv[i], token);
 		token = strtok(NULL, delim);
 	}
 	argv[i] = NULL;

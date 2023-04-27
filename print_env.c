@@ -6,27 +6,31 @@
  *
  * Return: always return 0 on success
  */
+
 void print_env(char **env)
 {
-	unsigned int i = 0, j;
+	unsigned int i = 0;
 	int status;
-	pid_t child;
+	pid_t child_pid;
 
-	child = fork();
-	if (child == 0)
+	child_pid = fork();
+	if (child_pid == -1)
 	{
-		while (env[i] != NULL)
+		perror("print_env: fork");
+		return;
+	}
+	if (child_pid == 0)
+	{
+		while (env[i])
 		{
-			for (j = 0; env[i][j] != '\0'; j++)
-				_putchar(env[i][j]);
-			_putchar('\n');
-			i++;
+			_puts(env[i++]);
 		}
-		exit(0);
+		_putchar('\n');
+		exit(EXIT_SUCCESS);
 	}
 	else
 	{
-		wait(&status);
+		waitpid(child_pid, &status, 0);
 	}
 
 }

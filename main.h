@@ -1,6 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,7 +11,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 
+void sigint_handler(__attribute__((unused))int sig_num);
+void _puts(char *str);
 int get_ppid(void);
 int get_pid(void);
 int _argc(char *buf);
