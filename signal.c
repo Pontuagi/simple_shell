@@ -6,7 +6,5 @@
 
 void sigint_handler(__attribute__((unused))int sig_num)
 {
-	_putchar('\n');
-	_puts("($)");
-	fflush(stdout);
+	_puts("\n($) ");
 }

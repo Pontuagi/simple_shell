@@ -36,9 +36,15 @@ int main(int ac, char **av, char **env)
 			continue;
 		if (buffer == NULL)
 			return (-1);
+		buffer[_strcspn(buffer, "\n")] = '\0';
+		if (access(buffer, X_OK) == 0)
+			execve(buffer, av, env);
+		else
+		{
 		ac = _argc(buffer);
 		av = tokenize(buffer, ac);
 		keyword(ac, av, env);
+		}
 		if (!interactive)
 			break;
 	}

@@ -14,6 +14,7 @@
 #include <signal.h>
 
 void sigint_handler(__attribute__((unused))int sig_num);
+size_t _strcspn(const char *s, const char *look);
 void _puts(char *str);
 int get_ppid(void);
 int get_pid(void);
