@@ -11,6 +11,7 @@
 void execute_cmd(char **argv, char **env)
 {
 	char *command = NULL, *path = NULL;
+
 	if (argv)
 	{
 		command = argv[0];
