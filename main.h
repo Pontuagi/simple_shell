@@ -39,5 +39,6 @@ char *_strcpy(char *dest, char *src);
 int _atoi(char *s);
 char *_strchr(const char *s, char c);
 int _putchar(char c);
+void _exec_file(char *buffer, char **argv, char **env);
 
 #endif

@@ -38,7 +38,7 @@ int main(int ac, char **av, char **env)
 			return (-1);
 		buffer[_strcspn(buffer, "\n")] = '\0';
 		if (access(buffer, X_OK) == 0)
-			execve(buffer, av, env);
+			_exec_file(buffer, av, env);
 		else
 		{
 		ac = _argc(buffer);
