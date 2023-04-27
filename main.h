@@ -14,10 +14,10 @@
 int get_ppid(void);
 int get_pid(void);
 void exit_func(int argc, char **argv);
-void execute_cmd(char **argv);
+void execute_cmd(char **argv, char **env);
 char *get_path(char *command);
-char **tokenize(char *buffer, ssize_t bytes);
-void fork_exec(char **argv, char *path);
+char **tokenize(char *buffer);
+void fork_exec(char **argv, char **env);
 void print_env(char **env);
 ssize_t get_line(char **buffer,  FILE *stream);
 char *_read_line(void);

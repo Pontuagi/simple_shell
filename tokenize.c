@@ -8,21 +8,23 @@
   * Return: return Array of arguments or NULL
   */
 
-char **tokenize(char *buffer, ssize_t bytes)
+char **tokenize(char *buffer)
 {
 	char **argv, *token;
-	int i;
-	char *delim = " \n";
+	int i = 0;
 
-	argv = malloc(sizeof(char *) * bytes);
+	argv = malloc(sizeof(char *) * 2);
 	if (argv == NULL)
 		return (NULL);
-	token = strtok(buffer, delim);
-	for (i = 0; token != NULL; i++)
+	token = strtok(buffer, " ");
+	while (token != NULL)
 	{
-		argv[i] = malloc(sizeof(char) * _strlen(token));
-		argv[i] = token;
-		token = strtok(NULL, delim);
+		argv[i] = malloc(sizeof(char) * (_strlen(token) + 1));
+		if (argv[i] == NULL)
+		{
+			free(argv[i]);
+		}
+		token = strtok(NULL, " ");
 	}
 	argv[i] = NULL;
 

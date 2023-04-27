@@ -9,43 +9,39 @@
   * Return: 0 or -1
   */
 
-int main(int argc, char **argv, char **env)
+int main(int argc, char **argv, char **envp)
 {
 	char *token, *buffer = NULL, *buffer_copy = NULL, *delim = " \n";
 	size_t n = 0;
-	ssize_t bytes;
-
+	int i;
+	char **args;
 	while (1)
 	{
 		printf("($) ");
 		/* read input from stdin */
-		bytes = getline(&buffer, &n, stdin);
-		if (bytes == -1)
-		{
-			perror("error reading from stdin");
+		if (getline(&buffer, &n, stdin) == -1)
 			return (-1);
-		}
 		if (buffer[0] == '\n')
 			continue;
-		if (buffer == NULL)
-			return (-1);
-		buffer_copy = _strdup(buffer);
-		if (buffer_copy == NULL)
-		{
-			perror("error duplicating string");
-			return (-1);
-		}
+		buffer_copy = strdup(buffer);
 		/* tokenize to find the number of arguments */
-		argc = 0;
+		i = 0;
+		args = malloc(sizeof(char *) * 256);
+		if (args == NULL)
+		{
+			perror("malloc");
+			exit(EXIT_FAILURE);
+		}
 		token = strtok(buffer, delim);
 		while (token != NULL)
 		{
+			argv[i++] = token;
 			argc++;
 			token = strtok(NULL, delim);
 		}
-		argv = tokenize(buffer_copy, bytes);
-		keyword(argc, argv, env);
+		argv[i] = NULL;
+		fork_exec(args, envp);
 	}
-	free(buffer), free(buffer_copy);
+	free(buffer), free(buffer_copy), free(args);
 	return (0);
 }

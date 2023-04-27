@@ -8,6 +8,7 @@
   */
 
 void keyword(int argc, char **argv, char **env)
+
 {
 	char *command = argv[0];
 
@@ -29,7 +30,7 @@ void keyword(int argc, char **argv, char **env)
 	}
 	else
 	{
-		execute_cmd(argv);
+		execute_cmd(argv, env);
 	}
 
 }

@@ -7,10 +7,9 @@
  * Return: void.
  */
 
-void execute_cmd(char **argv)
+void execute_cmd(char **argv, char **env)
 {
 	char *command = NULL, *path = NULL;
-
 	if (argv)
 	{
 		command = argv[0];
@@ -23,7 +22,7 @@ void execute_cmd(char **argv)
 		else
 		{
 			/* execute the path returned */
-			fork_exec(argv, path);
+			fork_exec(argv, env);
 		}
 	}
 

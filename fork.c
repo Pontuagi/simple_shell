@@ -6,7 +6,7 @@
   * @path: the path of the command
   */
 
-void fork_exec(char **argv, char *path)
+void fork_exec(char **argv, char **env)
 {
 	pid_t child;
 	int status;
@@ -17,14 +17,19 @@ void fork_exec(char **argv, char *path)
 		if (child == 0)
 		{
 		/* the child process executes the path and returns to parent */
-			if (execve(path, argv, NULL) == -1)
+			if (execve(argv[0], argv, env) == -1)
 				perror("error executing comand");
-			exit(0);
+			exit(EXIT_FAILURE);
+		}
+		else if (child == -1)
+		{
+			perror("fork failed");
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
 		/* the parent waits for the child to finish executing */
-			wait(&status);
+			waitpid(child, &status, 0);
 		}
 	}
 }
