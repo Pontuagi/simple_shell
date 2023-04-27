@@ -17,13 +17,8 @@ int _argc(char *buf);
 void exit_func(int argc, char **argv);
 void execute_cmd(char **argv, char **env);
 char *get_path(char *command);
-<<<<<<< HEAD
-char **tokenize(char *buffer);
-void fork_exec(char **argv, char **env);
-=======
 char **tokenize(char *buffer, int argc);
 void fork_exec(char **argv, char *path, char **env);
->>>>>>> de6ed2d3d784f440464e4c9bc31016a803475346
 void print_env(char **env);
 ssize_t get_line(char **buffer,  FILE *stream);
 char *_read_line(void);

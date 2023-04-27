@@ -25,11 +25,7 @@ void execute_cmd(char **argv, char **env)
 		else
 		{
 			/* execute the path returned */
-<<<<<<< HEAD
-			fork_exec(argv, env);
-=======
 			fork_exec(argv, path, env);
->>>>>>> de6ed2d3d784f440464e4c9bc31016a803475346
 		}
 	}
 }
