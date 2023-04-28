@@ -11,7 +11,8 @@
 
 int main(int ac, char **av, char **env)
 {
-	char *buffer = NULL;
+	char *buffer = NULL, *promt = "$ ";
+
 	size_t n;
 	ssize_t read;
 	int interactive = isatty(STDIN_FILENO);
@@ -20,7 +21,7 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		if (interactive)
-			_puts("($) ");
+			write(STDOUT_FILENO, promt, 2);
 		read = getline(&buffer, &n, stdin);
 		if (read == -1)
 		{
