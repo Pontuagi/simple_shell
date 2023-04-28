@@ -8,33 +8,32 @@
 
 void exit_func(int argc, char **argv)
 {
-	char *num = argv[1];
+	int exit_status = 0;
 	int no;
 
-	/* if there is only one argument to exit */
-	if (argc == 1)
+	/* if there is more than two argument to exit */
+	if (argc > 2)
 	{
-		exit(0);
+		exit_status = 1;
 	}
 	/* check if there is ony 2 arguments in exit call */
 	else if (argc == 2)
 	{
 		/* convert num to interger using atoi function */
-		no = _atoi(num);
-		if (no == 0 && strcmp(num, "0") != 0)
+		no = _atoi(argv[1]);
+		if (no == 0 && _strcmp(argv[1], "0") != 0)
 		{
 			perror("Invalid exit status");
-			exit(1);
+			exit_status = 1;
 		}
-		if (no > 255)
-			exit(1);
+		else if (no > 255 || no < 0)
+		{
+			exit_status = 1;
+		}
 		else
-			exit(no);
+		{
+			exit_status = no;
+		}
 	}
-	else
-	{
-		errno = EINVAL;
-		perror("Too many arguments to exit");
-		exit(1);
-	}
+	exit(exit_status);
 }
