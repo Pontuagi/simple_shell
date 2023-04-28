@@ -20,16 +20,12 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		if (interactive)
-		{
-		_puts("($) ");
-		}
+			_puts("($) ");
 		read = getline(&buffer, &n, stdin);
 		if (read == -1)
 		{
 			if (interactive)
-			{
 				_puts("\n");
-			}
 			break;
 		}
 		if (buffer[0] == '\n')
@@ -41,9 +37,12 @@ int main(int ac, char **av, char **env)
 			_exec_file(buffer, av, env);
 		else
 		{
-		ac = _argc(buffer);
-		av = tokenize(buffer, ac);
-		keyword(ac, av, env);
+			ac = _argc(buffer);
+			av = tokenize(buffer, ac);
+			if (av == NULL)
+				_puts("failed to allocate tokens to av\n");
+			keyword(ac, av, env);
+			free(av);
 		}
 		if (!interactive)
 			break;
