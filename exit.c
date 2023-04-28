@@ -14,7 +14,7 @@ void exit_func(int argc, char **argv)
 	/* if there is more than two argument to exit */
 	if (argc > 2)
 	{
-		fprintf(stderr, "Too many arguments to exit\n");
+		_puts("Too many arguments to exit\n");
 		exit_status = 2;
 	}
 	/* check if there is ony 2 arguments in exit call */

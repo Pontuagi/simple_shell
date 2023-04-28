@@ -1,6 +1,9 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#define WRITE_BUFSIZE 1024
+#define FLUSH_BUF -1
+
 #include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +16,8 @@
 #include <errno.h>
 #include <signal.h>
 
+void _eputs(char *s);
+int _eputchar(char c);
 void sigint_handler(__attribute__((unused))int sig_num);
 size_t _strcspn(const char *s, const char *look);
 void _puts(char *str);

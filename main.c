@@ -25,7 +25,7 @@ int main(int ac, char **av, char **env)
 		if (read == -1)
 		{
 			if (interactive)
-				_puts("\n");
+				_putchar('\n');
 			break;
 		}
 		if (buffer[0] == '\n')
@@ -40,7 +40,7 @@ int main(int ac, char **av, char **env)
 			ac = _argc(buffer);
 			av = tokenize(buffer, ac);
 			if (av == NULL)
-				_puts("failed to allocate tokens to av\n");
+				_eputs("failed to allocate tokens to av\n");
 			keyword(ac, av, env);
 			free(av);
 		}
