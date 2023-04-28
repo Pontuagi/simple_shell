@@ -1,53 +1,44 @@
 #include "main.h"
 
 /**
-  * main - create a simple shell
-  * @ac: argument count
-  * @av: argument vector to store the arguments
-  * @env: parameter to store our local enviromental variables
-  *
-  * Return: 0 or -1
-  */
-
-int main(int ac, char **av, char **env)
+ * main - application entry point
+ * @ac: arg count
+ * @av: arg vector
+ *
+ * Return: 0 on success, 1 on error
+ */
+int main(int argCount, char **av)
 {
-	char *buffer = NULL, *promt = "$ ";
+	info_t info[] = { INFO_INIT };
+	int file_descriptor = 2;
 
-	size_t n;
-	ssize_t read;
-	int interactive = isatty(STDIN_FILENO);
+	asm ("mov %1, %0\n\t"
+		"add $3, %0"
+		: "=r" (file_descriptor)
+		: "r" (file_descriptor));
 
-	signal(SIGINT, sigint_handler);
-	while (1)
+	if (argCount == 2)
 	{
-		if (interactive)
-			write(STDOUT_FILENO, promt, 2);
-		read = getline(&buffer, &n, stdin);
-		if (read == -1)
+		file_descriptor = open(av[1], O_RDONLY);
+		if (file_descriptor == -1)
 		{
-			if (interactive)
-				_putchar('\n');
-			break;
+			if (errno == EACCES)
+				exit(126);
+			if (errno == ENOENT)
+			{
+				_eputs(av[0]);
+				_eputs(": 0: Can't open ");
+				_eputs(av[1]);
+				_eputchar('\n');
+				_eputchar(BUF_FLUSH);
+				exit(127);
+			}
+			return (EXIT_FAILURE);
 		}
-		if (buffer[0] == '\n')
-			continue;
-		if (buffer == NULL)
-			return (-1);
-		buffer[_strcspn(buffer, "\n")] = '\0';
-		if (access(buffer, X_OK) == 0)
-			_exec_file(buffer, av, env);
-		else
-		{
-			ac = _argc(buffer);
-			av = tokenize(buffer, ac);
-			if (av == NULL)
-				_eputs("failed to allocate tokens to av\n");
-			keyword(ac, av, env);
-			free(av);
-		}
-		if (!interactive)
-			break;
+		info->readfile = file_descriptor;
 	}
-	free(buffer);
-	return (0);
+	populate_env_list(info);
+	read_history(info);
+	hsh(info, av);
+	return (EXIT_SUCCESS);
 }
