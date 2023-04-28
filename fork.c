@@ -37,6 +37,6 @@ void fork_exec(char **argv, char *path, char **env)
 			exit(EXIT_FAILURE);
 		}
 		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-			_puts("child exited with error");
+			_puts("child exited with error\n");
 	}
 }
