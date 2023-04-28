@@ -14,6 +14,7 @@ void exit_func(int argc, char **argv)
 	/* if there is more than two argument to exit */
 	if (argc > 2)
 	{
+		fprintf(stderr, "Too many arguments to exit\n");
 		exit_status = 1;
 	}
 	/* check if there is ony 2 arguments in exit call */
@@ -23,11 +24,12 @@ void exit_func(int argc, char **argv)
 		no = _atoi(argv[1]);
 		if (no == 0 && _strcmp(argv[1], "0") != 0)
 		{
-			perror("Invalid exit status");
+			fprintf(stderr, "Invalid exit status: %s\n", argv[1]);
 			exit_status = 1;
 		}
 		else if (no > 255 || no < 0)
 		{
+			fprintf(stderr, "Invalid exit status: %d\n", no);
 			exit_status = 1;
 		}
 		else
