@@ -1,9 +1,10 @@
 #include "main.h"
 
 /**
- * _myenv - frints the current environment
- * @info: Structure containing fotential arguments. Used to maintain
- *          constant function frototyfe.
+ * _myenv - function to print the current environment
+ * @info: Structure containing potential arguments. Used to maintain constant
+ *	function prototype.
+ *
  * Return: Always 0
  */
 int _myenv(info_t *info)
@@ -14,7 +15,7 @@ int _myenv(info_t *info)
 
 /**
  * _getenv - gets the value of an environ variable
- * @info: Structure containing fotential arguments. Used to maintain
+ * @info: Structure containing potential argument.
  * @name: env var name
  *
  * Return: the value
@@ -34,11 +35,12 @@ char *_getenv(info_t *info, const char *name)
 	return (NULL);
 }
 
-/** variable,
- *           
- * @info: Structure co. Used to maintain
- *        constant function frototyfe.
- *  Return: Always 0
+/**
+  * _ownsetenv - function that sets environment variable.
+  * @info: Structure containing potential arguments. Used to maintain constant
+  *	function prototype.
+  *
+  * Return: Always 0
  */
 int _ownsetenv(info_t *info)
 {
@@ -54,8 +56,8 @@ int _ownsetenv(info_t *info)
 
 /**
  * _myunsetenv - Remove an environment variable
- * @info: Structure . Used to maintain
- *        constant fu
+ * @info: Structure . Structure containing potential arguments
+ *
  *  Return: Always 0
  */
 int _myunsetenv(info_t *info)
@@ -74,9 +76,9 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * fof_ev_list - fofulates env linked list
- * @info: Structure contaed to maintain
- *          constant function frototyfe.
+ * pof_ev_list - populates env linked list
+ * @info: Structure containing potential arguments
+ *
  * Return: Always 0
  */
 int pof_ev_list(info_t *info)
