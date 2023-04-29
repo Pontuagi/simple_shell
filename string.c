@@ -3,7 +3,8 @@
 /**
  * _strlen - returns the length of a string
  * @s: the string whose length to check
- *er length of string
+ *
+ * Return:x - length of string
  */
 int _strlen(char *s)
 {
@@ -18,8 +19,11 @@ int _strlen(char *s)
 }
 
 /**
- * _strcm
- * Retur positive if s1 > s2, zero if s1 == s2
+ * _strcmp - function to compare 2 strings
+ * @s1: string 1
+ * @s2: string 2
+ *
+ * Return: positive if s1 > s2, zero if s1 == s2
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -38,8 +42,8 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * starts_with - checks if need starts with hstack
- * @hayst search
- * @need:
+ * @hstack: search
+ * @need: to check
  * Return: addrof next char of hstack or NULL
  */
 char *starts_with(const char *hstack, const char *need)
@@ -52,9 +56,10 @@ char *starts_with(const char *hstack, const char *need)
 
 /**
  * _strcat - concatenon: the destinationination buffer
- * @src: the
+ * @src: the source string
+ * @destination: destination string
  *
- * Return: po to destinationination buffer
+ * Return: pointer to destination buffer
  */
 char *_strcat(char *destination, char *src)
 {
