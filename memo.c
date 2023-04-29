@@ -4,7 +4,7 @@
  * bufree - frees a pointer and NULLs the address
  * @ptr: address
  *
- * Return: return 1 on error otherwise 0.
+ * Return: return 1 if true otherwise 0.
  */
 int bufree(void **ptr)
 {
