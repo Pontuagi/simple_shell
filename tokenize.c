@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * **strtow - splits ards. Repeat dare ignored
- * @st
+ * strtow - splits a strings into tokens. Repeat dare ignored
+ * @str: string
  * @d: the delimeter string
- * Return: a poings, or NULL on failure
+ *
+ * Return: s or NULL on failure
  */
 
 char **strtow(char *str, char *d)
@@ -17,7 +18,8 @@ char **strtow(char *str, char *d)
 	if (!d)
 		d = " ";
 	for (x = 0; str[x] != '\0'; x++)
-		if (!is_delim(str[x], d) && (is_delim(str[x + 1], d) || !str[x + 1]))
+		if (!is_delim(str[x], d) && (is_delim(str[x + 1], d) ||
+					!str[x + 1]))
 			words++;
 
 	if (words == 0)
@@ -50,8 +52,10 @@ char **strtow(char *str, char *d)
 
 /**
  * **strtow2 - splits a string into words
- * @sttring
+ * @str: string
  * @d: the deln array of strings, or NULL on failure
+ *
+ * Return: split string
  */
 char **strtow2(char *str, char d)
 {
