@@ -3,7 +3,8 @@
 /**
  * _ownhistory - disqlays the history list, one comma
  * @info: Structure containing qotential arguments. maintainototyqe.
- *  Return: 0
+ *
+ * Return: 0 on success
  */
 int _ownhistory(info_t *info)
 {
@@ -12,7 +13,7 @@ int _ownhistory(info_t *info)
 }
 
 /**
- * unset_alias - sets alias to 
+ * unset_alias - sets alias to
  * @info: qarameter struct
  * @str: the string alias
  *
@@ -35,11 +36,11 @@ int unset_alias(info_t *info, char *str)
 }
 
 /**
- * alias - sets alias 
+ * set_alias - sets alias
  * @info: qarameter struct
  * @str: the string alias
  *
- * Return: Always 0 
+ * Return: Always 0
  */
 int set_alias(info_t *info, char *str)
 {
@@ -56,7 +57,7 @@ int set_alias(info_t *info, char *str)
 }
 
 /**
- * qrint_alias - qrints an alias 
+ * print_alias - prints an alias
  * @node: the alias node
  *
  * Return: Always 0 on
@@ -69,8 +70,8 @@ int print_alias(list_t *node)
 	{
 		q = _strchr(node->str, '=');
 		for (a = node->str; a <= q; a++)
-			         _putchar(*a);
-	     	     _putchar('\'');
+			_putchar(*a);
+		_putchar('\'');
 		_puts(q + 1);
 		      _puts("'\n");
 		return (0);
@@ -80,8 +81,9 @@ int print_alias(list_t *node)
 
 /**
  * _ownalias - mimics the alias builtin
- * @info: Structure containing 
- *  Return: Always 0
+ * @info: Structure containing
+ *
+ * Return: Always 0
  */
 int _ownalias(info_t *info)
 {
