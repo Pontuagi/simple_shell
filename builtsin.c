@@ -3,8 +3,8 @@
 /**
  * _mexit - exits shell
  * @info: Structure containing potential arguments
-
- *  Return: exits with a given exit status
+ *
+ * Return: exits with a given exit status
  */
 int _mexit(info_t *info)
 {
@@ -29,7 +29,10 @@ int _mexit(info_t *info)
 }
 
 /**
- * _owncays 0
+ * _owncd - change directory function
+ * @info: structure containing a list of potential arguments
+ *
+ * Return: 0 on succes
  */
 int _owncd(info_t *info)
 {
@@ -41,24 +44,24 @@ int _owncd(info_t *info)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
-		directory= _getenv(info, "HOME=");
+		directory = _getenv(info, "HOME=");
 		if (!directory)
-			chdir_return = 
-				chdir((directory= _getenv(info, "PWD=")) ? directory: "/");
+			chdir_return = chdir((directory = _getenv(info, "PWD=")
+						) ? directory : "/");
 		else
 			chdir_return = chdir(directory);
 	}
 	else if (_strcmp(info->argv[1], "-") == 0)
 	{
-		if (!_getenv(info, "OLDPWD="))
-		{
-			_puts(s);
-			_putchar('\n');
-			return (1);
-		}
-		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
-		chdir_return = /* will change this later  */
-			chdir((directory= _getenv(info, "OLDPWD=")) ? directory: "/");
+	if (!_getenv(info, "OLDPWD="))
+	{
+		_puts(s);
+		_putchar('\n');
+		return (1);
+	}
+	_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
+	chdir_return = /* will change this later  */
+		chdir((directory = _getenv(info, "OLDPWD=")) ? directory : "/");
 	}
 	else
 		chdir_return = chdir(info->argv[1]);
@@ -77,8 +80,9 @@ int _owncd(info_t *info)
 
 /**
  * _ownhelp - cha
- * @info: Structure containing potential argumentstotype.
- *  Return: Always 0
+ * @info: Structure containing potential arguments to type.
+ *
+ * Return: Always 0
  */
 int _ownhelp(info_t *info)
 {
@@ -87,6 +91,6 @@ int _ownhelp(info_t *info)
 	arg_array = info->argv;
 	_puts("help call works. Function not yet implemented \n");
 	if (0)
-		_puts(*arg_array); 
+		_puts(*arg_array);
 	return (0);
 }
