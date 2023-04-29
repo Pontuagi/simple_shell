@@ -1,8 +1,7 @@
 #include "main.h"
 
 /**
- * get_history_
- * ets the history file
+ * get_history - gets the history file
  * @info: parameter struct
  *
  * Return: allocated string containg history file
@@ -26,8 +25,8 @@ char *get_history(info_t *info)
 }
 
 /**
- * wrt_hist - 
- * ruct
+ * wrt_hist - write history
+ * @info: parameter struct
  *
  * Return: 1 on success, else -1
  */
@@ -55,8 +54,8 @@ int wrt_hist(info_t *info)
 }
 
 /**
- * read_his- reads history from file
- * @info: the puct
+ * r_hist - reads history from file
+ * @info: the parameter struct
  *
  * Return: histcount on success, 0 otherwise
  */
@@ -103,10 +102,11 @@ int r_hist(info_t *info)
 	return (info->histcount);
 }
 
-/**tory linked list
- * @info: Structure containing potential arguments. Used to maintain
+/**
+ * build_hist - build history of linked list
+ * @info: Structure containing potential arguments.
  * @buf: buffer
- * @e history linecount, histcount
+ * @linecount: the history linecount, histcount
  *
  * Return: Always 0
  */
@@ -124,10 +124,10 @@ int build_hist(info_t *info, char *buf, int linecount)
 }
 
 /**
- * re_hist - renumbersd list after changes
- * @info: Structure l arguments. Used to maintain
+ * re_hist - renumbers the list after changes
+ * @info: Struct of potential arguments.
  *
- * Return: the nunt
+ * Return: the number
  */
 int re_hist(info_t *info)
 {
