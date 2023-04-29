@@ -1,8 +1,10 @@
 #include "main.h"
 
 /**
- * get_envure containing potential arguments. Used to maintain
+ * get_environ - function to get enviroment.
+ * @info: struct containing potential arguments. Used to maintain
  *          constant function prototype.
+ *
  * Return: Always 0
  */
 char **get_environ(info_t *info)
@@ -18,9 +20,10 @@ char **get_environ(info_t *info)
 
 /**
  * _unsetenv - Remove an environment variable
- * @info: Structure cuments. Used to maintain
- *        constant funct
+ * @info: Struct containing potential arguments
  * @var: the string env var property
+ *
+ * Return: always 0
  */
 int _unsetenv(info_t *info, char *var)
 {
@@ -48,12 +51,12 @@ int _unsetenv(info_t *info, char *var)
 }
 
 /**
- * _setenv - Initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant 
+ * _setenv - Initialize a new environment variable, or modify an existing one
+ * @info: Structure containing potential arguments.
  * @value: the string env var value
- *  Return: Always 0
+ * @var: the string env var property
+ *
+ * Return: Always 0
  */
 int _setenv(info_t *info, char *var, char *value)
 {
