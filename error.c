@@ -3,8 +3,9 @@
 /**
  * _errtoi - converts a string to an integer
  * @s: the string to be converted
+ *
  * Return: 0 if no numbers ed number otherwise
- *       -1 on error
+ *	-1 on error
  */
 int _errtoi(char *s)
 {
@@ -12,7 +13,7 @@ int _errtoi(char *s)
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++;  
+		s++;
 	for (i = 0;  s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
@@ -30,8 +31,9 @@ int _errtoi(char *s)
 
 /**
  * print_error - prints an error message
- * @info: the para
+ * @info: the structure containing possible argument
  * @estr: string containing specified error type
+ *
  * Return: 0 if ng, converted number otherwise
  *        -1 on error
  */
@@ -47,7 +49,7 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * print_d - functinumber (base 10)
+ * print_d - function that prints number (base 10)
  * @input: the input
  * @fd: the filedescriptor to write to
  *
