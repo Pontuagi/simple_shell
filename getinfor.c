@@ -15,7 +15,8 @@ void clear_info(info_t *info)
 /**
  * set_info - initializes info_t struct
  * @info: struct address
- r
+ * @av: argument vector
+ *
  */
 void set_info(info_t *info, char **av)
 {
@@ -47,7 +48,7 @@ void set_info(info_t *info, char **av)
 /**
  * free_info - frees info_t struct fields
  * @info: struct address
- * @alls
+ * @all: interger to check
  */
 void free_info(info_t *info, int all)
 {
@@ -58,14 +59,14 @@ void free_info(info_t *info, int all)
 	{
 		if (!info->cmd_buf)
 			free(info->arg);
-		   if (info->env)
-free_list(&(info->env));
-		         if (info->history)
+		if (info->env)
+			free_list(&(info->env));
+		if (info->history)
 			free_list(&(info->history));
-			if (info->alias)
+		if (info->alias)
 			free_list(&(info->alias));
 		_ffre(info->environ);
-info->environ = NULL;
+		info->environ = NULL;
 		   bufree((void **)info->cmd_buf);
 		if (info->readfile > 2)
 			close(info->readfile);
