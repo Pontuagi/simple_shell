@@ -79,12 +79,12 @@ size_t print_list(const list_t *h)
 }
 
 /**
- * node_startturns node whose string starts with prefix
- * @node: poead
+ * node_starts_with - returns node whose string starts with prefix
+ * @node: struct node
  * @prefix: string to match
- * @c: the next cer prefix to match
+ * @c: the next char prefix to match
  *
- * Return: match nodll
+ * Return: match nodel
  */
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
@@ -93,7 +93,7 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 	while (node)
 	{
 		x = starts_with(node->str, prefix);
-		if (x&& ((c == -1) || (*x == c)))
+		if (x && ((c == -1) || (*x == c)))
 			return (node);
 		node = node->next;
 	}
@@ -101,8 +101,9 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 }
 
 /**
- * get_node- gets the index of a node
- * @head: pointer toode
+ * get_node_index - gets the index of a node
+ * @head: pointer to head node
+ * @node: struct node.
  *
  * Return: index of node or -1
  */
