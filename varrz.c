@@ -24,9 +24,9 @@ int is_chain(info_t *info, char *buf, size_t *p)
 		x++;
 		info->cmd_buf_type = CMD_AND;
 	}
-	else if (buf[x] == ';') 
+	else if (buf[x] == ';')
 	{
-		buf[x] = 0; 
+		buf[x] = 0;
 		info->cmd_buf_type = CMD_CHAIN;
 	}
 	else
