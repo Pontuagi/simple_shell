@@ -3,9 +3,10 @@
 /**
  * add_node - adds a node to the start of the list
  * @head: address
+ * @str: data
  * @num: node index used by history
  *
- * Return: st
+ * Return: n_head
  */
 list_t *add_node(list_t **head, const char *str, int num)
 {
@@ -33,10 +34,11 @@ list_t *add_node(list_t **head, const char *str, int num)
 }
 
 /**
- * addend - adds a node to the end of the list
+ * add_node_end - adds a node to the end of the list
  * @head: address of pointer to head node
  * @str: str f
  * @num: n
+ *
  * Return: size of list
  */
 list_t *add_node_end(list_t **head, const char *str, int num)
@@ -73,7 +75,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 }
 
 /**
- * print_lisy the str element of a list_t linked list
+ * print_list_s - the str element of a list_t linked list
  * @h: po first node
  *
  * Return: size of list
@@ -93,7 +95,7 @@ size_t print_list_s(const list_t *h)
 }
 
 /**
- * delete_node_at_indetes node at given index
+ * delete_node_at_index - deletes node at given index
  * @head: address  to first node
  * @index: index of node to delete
  *
