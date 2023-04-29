@@ -1,8 +1,9 @@
 #include "main.h"
 
 /**
- * is_command -
+ * is_command - function to check if is command
  * @path: path to the file
+ * @info: struct info
  *
  * Return: 1 if true, 0 otherwise
  */
@@ -23,8 +24,8 @@ int is_command(info_t *info, char *path)
 
 /**
  * dup_c - duplicates characters
- * @pathstr:
- * index
+ * @pathstr: path to the string
+ * @start: start index
  * @stop: stopping index
  *
  * Return: pointer to new buffer
@@ -32,7 +33,7 @@ int is_command(info_t *info, char *path)
 char *dup_c(char *pathstr, int start, int stop)
 {
 	static char buf[1024];
-	int x= 0, k = 0;
+	int x = 0, k = 0;
 
 	for (k = 0, x = start; x < stop; x++)
 		if (pathstr[x] != ':')
@@ -43,7 +44,8 @@ char *dup_c(char *pathstr, int start, int stop)
 
 /**
  * find_p - finds this cmd in the PATH string
- * @infoATH
+ * @info: struct info
+ * @pathstr: path string
  * @cmd: the cmd to find
  *
  * Return: th of cmd if found or NULL
