@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- **_memoset - fiemory with a constant byte
- *@s: the pointerhe memory area
- *@b: the byte *s with
- *@
- *Return: (s)ter to the memory area s
+ * _memoset - file memory with a constant byte
+ * @s: the pointer to the memory area
+ * @b: the const byte
+ * @n: the byte in *s
+ *
+ * Return: (s) to the memory area *s
  */
 char *_memoset(char *s, char b, unsigned int n)
 {
@@ -33,11 +34,11 @@ void _ffre(char **pp)
 
 /**
  * _realloc - reallocates a block of memory
- * @ptr: pointer to previous malloc'ated block
- * 
- * @n size lock
+ * @ptr: pointer to previous mallocated block
+ * @old_size: size of previously allocated space
+ * @new_size: new size to allocate
  *
- * Return: pointer to da ol'block nameen.
+ * Return: pointer to the old block name.
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
