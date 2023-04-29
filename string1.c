@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * _strcpy - cs a string
+ * _strcpy - copies a string
  * @destination: the destinationination
- * @src: the sourc
+ * @src: the source
  * Return: pointer to destinationination
  */
 char *_strcpy(char *destination, char *src)
@@ -23,8 +23,9 @@ char *_strcpy(char *destination, char *src)
 
 /**
  * _strdup - duplicateshe string to duplicate
+ * @str: string to duplicate
  *
- * Return: p to the duplicated string
+ * Return: retu - pointer to the duplicated string
  */
 char *_strdup(const char *str)
 {
@@ -44,8 +45,8 @@ char *_strdup(const char *str)
 }
 
 /**
- *_puts - prints an input string
- *@str: the string to be printed
+ * _puts - prints an input string
+ * @str: the string to be printed
  *
  * Return: Nothing
  */
@@ -64,9 +65,9 @@ void _puts(char *str)
 
 /**
  * _putchar - writes the character c to stdout
- * @The character to print
+ * @c: The character to print
  *
- * Res returned, and errno is set appropriately.
+ * Return: 1 is returned.
  */
 int _putchar(char c)
 {
