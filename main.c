@@ -27,7 +27,7 @@ int main(int argCount, char **av)
 			if (errno == ENOENT)
 			{
 				_eputs(av[0]);
-				_eputs(": 0: Can't open ");
+				_eputs(": 0: Can t Open ");
 				_eputs(av[1]);
 				_eputchar('\n');
 				_eputchar(BUF_FLUSH);
@@ -37,8 +37,8 @@ int main(int argCount, char **av)
 		}
 		info->readfile = file_descriptor;
 	}
-	populate_env_list(info);
-	read_history(info);
-	hsh(info, av);
+	pof_ev_list(info);
+	r_hist(info);
+	_loopsh(info, av);
 	return (EXIT_SUCCESS);
 }

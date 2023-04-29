@@ -3,27 +3,23 @@
 /**
  * _strlen - returns the length of a string
  * @s: the string whose length to check
- *
- * Return: integer length of string
+ *er length of string
  */
 int _strlen(char *s)
 {
-	int i = 0;
+	int x = 0;
 
 	if (!s)
 		return (0);
 
 	while (*s++)
-		i++;
-	return (i);
+		x++;
+	return (x);
 }
 
 /**
- * _strcmp - performs lexicogarphic comparison of two strangs.
- * @s1: the first strang
- * @s2: the second strang
- *
- * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
+ * _strcm
+ * Retur positive if s1 > s2, zero if s1 == s2
  */
 int _strcmp(char *s1, char *s2)
 {
@@ -41,35 +37,33 @@ int _strcmp(char *s1, char *s2)
 }
 
 /**
- * starts_with - checks if needle starts with haystack
- * @haystack: string to search
- * @needle: the substring to find
- *
- * Return: address of next char of haystack or NULL
+ * starts_with - checks if need starts with hstack
+ * @hayst search
+ * @need:
+ * Return: addrof next char of hstack or NULL
  */
-char *starts_with(const char *haystack, const char *needle)
+char *starts_with(const char *hstack, const char *need)
 {
-	while (*needle)
-		if (*needle++ != *haystack++)
+	while (*need)
+		if (*need++ != *hstack++)
 			return (NULL);
-	return ((char *)haystack);
+	return ((char *)hstack);
 }
 
 /**
- * _strcat - concatenates two strings
- * @dest: the destination buffer
- * @src: the source buffer
+ * _strcat - concatenon: the destinationination buffer
+ * @src: the
  *
- * Return: pointer to destination buffer
+ * Return: po to destinationination buffer
  */
-char *_strcat(char *dest, char *src)
+char *_strcat(char *destination, char *src)
 {
-	char *ret = dest;
+	char *retu = destination;
 
-	while (*dest)
-		dest++;
+	while (*destination)
+		destination++;
 	while (*src)
-		*dest++ = *src++;
-	*dest = *src;
-	return (ret);
+		*destination++ = *src++;
+	*destination = *src;
+	return (retu);
 }
