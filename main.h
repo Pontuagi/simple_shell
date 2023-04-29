@@ -38,8 +38,9 @@ extern char **environ;
 
 
 /**
+ * struct liststr - node struct
  * strstr - singly linked list
- * @nnumber field
+ * @num: number field
  * @str: a string
  * @next: points to the next node
  */
@@ -50,7 +51,27 @@ typedef struct liststr
 	struct liststr *next;
 } list_t;
 
-
+/**
+  * struct passinfo - struct containing common variables
+  * @arg: argument
+  * @argv: argument vector
+  * @path: path varable
+  * @argc: argument count
+  * @line_count: line count
+  * @err_num: error number
+  * @linecount_flag: store linecount flag
+  * @fname: file name
+  * @env: environment list
+  * @history: history list
+  * @alias: alias list
+  * @environ: enviroment variable
+  * @env_changed: enviroment changed to
+  * @status: return status of child
+  * @cmd_buf: command buffer
+  * @cmd_buf_type: command buffer type
+  * @readfile: readfile status
+  * @histcount: history count
+  */
 typedef struct passinfo
 {
 	char *arg;
@@ -67,9 +88,8 @@ typedef struct passinfo
 	char **environ;
 	int env_changed;
 	int status;
-
-	char **cmd_buf; 
-	int cmd_buf_type; 
+	char **cmd_buf;
+	int cmd_buf_type;
 	int readfile;
 	int histcount;
 } info_t;
@@ -78,11 +98,10 @@ typedef struct passinfo
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
 	0, 0, 0}
 
-/**and related function
- *@type: n
- 
-  cnd flag
- *@func: the func
+/**
+  * struct builtin - contain builtin variables and related function
+  *@type: n cnd flag
+  *@func: the func
  */
 typedef struct builtin
 {
@@ -91,6 +110,7 @@ typedef struct builtin
 } builtin_table;
 
 
+/* prototypes */
 int _loopsh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
@@ -99,8 +119,6 @@ int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
-
-
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
@@ -110,13 +128,10 @@ char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 char **strtow(char *, char *);
 char **strtow2(char *, char);
-
 int is_command(info_t *, char *);
 char *dup_c(char *, int, int);
 char *find_p(info_t *, char *, char *);
-
 int loop_loopsh(char **);
-
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
@@ -124,25 +139,19 @@ int _putsfd(char *str, int fd);
 char *_memoset(char *, char, unsigned int);
 void _ffre(char **);
 void *_realloc(void *, unsigned int, unsigned int);
-
 int bufree(void **);
-
 int interactive(info_t *);
 int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
-
-
 int _errtoi(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
 void rm_comments(char *);
-
 int _mexit(info_t *);
 int _owncd(info_t *);
 int _ownhelp(info_t *);
-
 char *get_history(info_t *info);
 int wrt_hist(info_t *info);
 int r_hist(info_t *info);
@@ -168,22 +177,16 @@ int _ownalias(info_t *);
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
 void sigintHandler(int);
-
-
 void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
-
 char *_getenv(info_t *, const char *);
 int _myenv(info_t *);
 int _ownsetenv(info_t *);
 int _myunsetenv(info_t *);
 int pof_ev_list(info_t *);
-
 char **get_environ(info_t *);
 int _unsetenv(info_t *, char *);
 int _setenv(info_t *, char *, char *);
-
-
 
 #endif
