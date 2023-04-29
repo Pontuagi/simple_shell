@@ -3,8 +3,9 @@
 /**
  * is_chain - test if current char in buffer is a chain delimeter
  * @info: the parameter struct
- * buffer
- * @p: address o
+ * @buf: buffer
+ * @p: addres
+ *
  * Return: 1 if chain delimeter, 0 otherwise
  */
 int is_chain(info_t *info, char *buf, size_t *p)
@@ -35,12 +36,14 @@ int is_chain(info_t *info, char *buf, size_t *p)
 }
 
 /**
- * che_chai - checks we should continue chaining based on last status
- * @info: t
- * @ress of current position in buf
- * @i: gth of buf
+ * che_chai - checks if we should continue chaining based on last status
+ * @info: parameter structure;
+ * @buf: buffer
+ * @p: address of current position in buf
+ * @i: bytes
+ * @len: length of buf
  *
- * Ro
+ * Return: x
  */
 void che_chai(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
